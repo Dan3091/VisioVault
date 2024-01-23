@@ -180,6 +180,7 @@ def autofill(app_name):
     password = database[app_name][1]
     security = video_capture_logic(email)
     if security == True:
+        popup_message(f"Accepted! Hi {email}, one moment and you will be redirected to your {app_name} account.")
         web_opt = webdriver.ChromeOptions()
         web_opt.add_experimental_option("detach", True)
         web = webdriver.Chrome(options=web_opt)
