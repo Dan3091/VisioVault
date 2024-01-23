@@ -154,6 +154,7 @@ def reset():
     popup_message("All data from database was deleted.")
     app.reset_data_button.config(state=DISABLED)
     app.start_button.config(state=DISABLED)
+    app.faceid_button.config(state=DISABLED)
 
 def popup_message(message):
     """
