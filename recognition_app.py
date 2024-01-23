@@ -2,6 +2,27 @@ import cv2
 import face_recognition
 
 
+def add_rectangle_and_text(frame, name):
+    """
+    This function add a rectangle around the face,
+    and add some text, to find the face location coordinates,
+     it's using the face_location method from face_recognition module.
+    """
+
+    resized_frame = cv2.resize(frame, (0, 0), fx=0.3, fy=0.3)
+    rgb_resized_frame = cv2.cvtColor(resized_frame, cv2.COLOR_BGR2RGB)
+    y0, x1, y1, x0 = face_recognition.face_locations(rgb_resized_frame)[0]
+    cv2.rectangle(frame,
+                  (int(x0 / 0.3), int(y0 / 0.3)),
+                  (int(x1 / 0.3), int(y1 / 0.3)),
+                  (0, 248, 6), 2)
+    cv2.putText(frame,
+                name,
+                (int(x0 / 0.3),
+                 int(y0 / 0.3) - 5),
+                cv2.FONT_ITALIC,
+                1, (0, 248, 6), 2)
+
 def prepare_images(base_img, to_compare_img):
     """
     Given the base image location and the image to compare(frame),
