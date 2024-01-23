@@ -165,4 +165,34 @@ def popup_message(message):
     window.withdraw()
     return showinfo(title="Info", message=message)
 
+
+def autofill(app_name):
+    """
+    By using selenium.webdriver module will create a webdriver object,
+     then will use find_element method (using xpath type) to find the Cookies button,
+      email entry, password and login button then with send method it will fill email and password entries
+      after that with click method it will click on Allow cookies and LogIn buttons
+      """
+
+    url = app_urls[app_name]
+    email = database[app_name][0]
+    password = database[app_name][1]
+    security = video_capture_logic(email)
+    if security == True:
+        web_opt = webdriver.ChromeOptions()
+        web_opt.add_experimental_option("detach", True)
+        web = webdriver.Chrome(options=web_opt)
+        web.get(url)
+        log_in_button = web.find_element("xpath", app_tags[app_name][0])
+        log_in_button.click()
+        email_form = web.find_element("xpath", app_tags[app_name][1])
+        email_form.send_keys(email)
+        psw_form = web.find_element("xpath", app_tags[app_name][2])
+        psw_form.send_keys(password)
+        time.sleep(10)
+        log_in_button1 = web.find_element("xpath", app_tags[app_name][3])
+        log_in_button1.click()
+    else:
+        popup_message("Sorry, I can't recognize you!")
+
 app = App(add_app, reset, start, face_id_security, select_app)
