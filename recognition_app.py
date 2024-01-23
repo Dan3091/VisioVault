@@ -2,6 +2,38 @@ import cv2
 import face_recognition
 
 
+def face_id():
+    """
+    This function by using cv2 module, try to find a valid camera port,
+    if it finds then the camera starts and after few seconds it takes a photo(base_img),
+    saves it like "faceid.jpg" and return False, if not then the function return True.
+    """
+
+    no_camera = True
+    for port in (0, 1, 2, 3):
+        try:
+            cam = cv2.VideoCapture(port)
+            print(cam)
+            rectangle_text = "Don't move!"
+            counter = 0
+            while True:
+                ret, frame = cam.read()
+                try:
+                    if counter == 120:
+                        cv2.imwrite("faceid.jpg", frame)
+                        cv2.destroyWindow("frame")
+                        break
+                    add_rectangle_and_text(frame, rectangle_text)
+                    counter += 1
+                except:
+                    pass
+                cv2.imshow("frame", frame)
+                key = cv2.waitKey(1)
+                no_camera = False
+        except:
+            pass
+    return no_camera
+
 def add_rectangle_and_text(frame, name):
     """
     This function add a rectangle around the face,
