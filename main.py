@@ -20,3 +20,17 @@ app_tags = {"Facebook": ["/html/body/div[3]/div[2]/div/div/div/div/div[4]/button
                           "/html/body/div[2]/div/div/div[2]/div/div/div[1]/section/main/article/div[2]/div[1]/div[2]/form/div/div[3]"]}
 
 database = {}
+
+def select_app():
+    """
+    app.var.get() return the selected radio button 1 or 2,
+     if app.var.get() == 1 then select_app() return Facebook,
+     else if app.var.get() == 2 then it returns Instagram.
+     """
+
+    if app.var.get() == "1":
+        return "Facebook"
+    elif app.var.get() == "2":
+        return "Instagram"
+
+app = App(add_app, reset, start, face_id_security, select_app)
