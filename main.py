@@ -123,4 +123,21 @@ def load_data():
     except:
         return {}
 
+def face_id_security():
+    """
+    This function is called when you click on FaceID button,
+     then the face_id() function is called and assigned to response variable,
+     if response return True then a popup message window will appear,
+     saying that no camera was found on this computer,
+      otherwise will appear a popup message saying that The face ID was saved.
+      """
+
+    response = face_id()
+    if response:
+        popup_message("There isn't any camera on this Computer!")
+    else:
+        popup_message("Face ID was saved.")
+        app.reset_data_button.config(state=NORMAL)
+        app.start_button.config(state=NORMAL)
+
 app = App(add_app, reset, start, face_id_security, select_app)
