@@ -215,4 +215,11 @@ def popup_choose_app(message):
     posy = str((pop.winfo_screenheight() // 2) - (pop.winfo_height() // 2))
     pop.geometry(f"{pop.winfo_width()}x{pop.winfo_height()}+{posx}+{posy}")
 
+def start():
+    """
+    The function simply call the popup_choose_app function
+    """
+
+    popup_choose_app(f"Leave the window or minimize it and go on some app website.")
+
 app = App(add_app, reset, start, face_id_security, select_app)
