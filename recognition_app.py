@@ -79,3 +79,40 @@ def compare_images(base_img, to_compare_img):
     compare_img = face_recognition.compare_faces([base_img], to_compare_img)
     compare_img = compare_img[0]
     return compare_img
+
+def video_capture_logic(name, base_image_path="faceid.jpg"):
+    """
+    This is the main function return True,
+     if on both images the faces are similar and False otherwise.
+    """
+
+    base_image_path = cv2.imread(base_image_path)
+    cam = cv2.VideoCapture(0)
+    compare = None
+    rectangle_text = "Scanning, Don't move!"
+    counter = 0
+    not_recognized = 0
+    while True:
+        ret, frame = cam.read()
+        try:
+            add_rectangle_and_text(frame, rectangle_text)
+            counter += 1
+            if counter > 180 and compare == True or not_recognized == 3:
+                cv2.destroyWindow("frame")
+                break
+            if (compare is None or compare == False) and counter == 90:
+                not_recognized += 1
+                counter = 0
+                base_img, to_compare_img = prepare_images(base_image_path, frame)
+                compare = compare_images(base_img, to_compare_img)
+                if compare == False:
+                    base_img, to_compare_img = prepare_images(base_image_path, frame)
+                    compare = compare_images(base_img, to_compare_img)
+                    rectangle_text = "I don' know who are you!"
+                elif compare == True:
+                    rectangle_text = f"Hi {name}!"
+        except:
+            pass
+        cv2.imshow("frame", frame)
+        key = cv2.waitKey(1)
+    return compare
