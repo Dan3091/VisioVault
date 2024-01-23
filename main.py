@@ -222,4 +222,21 @@ def start():
 
     popup_choose_app(f"Leave the window or minimize it and go on some app website.")
 
+def main():
+    """
+    The main function call the load_data function if in database there is any data the start_button,
+     reset_button and faceid_button state change from DISABLED to NORMAL
+     """
+
+    global database
+    database = load_data()
+    if database != {} and os.path.exists('faceid.jpg'):
+        app.start_button.config(state=NORMAL)
+        app.reset_data_button.config(state=NORMAL)
+        app.faceid_button.config(state=NORMAL)
+
 app = App(add_app, reset, start, face_id_security, select_app)
+
+if __name__ == "__main__":
+    main()
+    app.mainloop()
