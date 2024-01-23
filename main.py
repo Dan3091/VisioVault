@@ -94,4 +94,33 @@ def add_app():
         save_data()
         app.faceid_button.config(state=NORMAL)
 
+def save_data():
+    """
+    Here the function call the encrypt_dict function from database_encryptor,
+     to encrypt database dictionary, then it save this data like database.bin on disk.
+     """
+
+    if len(database) > 0:
+        print("Enter")
+        with open("database.bin", "wb+") as file:
+            data = encrypt_dict(str(database))
+            file.write(data)
+    load_data()
+
+def load_data():
+    """
+    This function will try to load the database encrypted file,
+    if present it will load it and by using decrypt_dict method,
+     from database_encryptor module will decrypt and return it,
+      otherwise it will return an empty dictionary
+      """
+
+    try:
+        with open("database.bin", "rb") as file:
+            data = file.read()
+            data = eval(decrypt_dict(data))
+            return data
+    except:
+        return {}
+
 app = App(add_app, reset, start, face_id_security, select_app)
