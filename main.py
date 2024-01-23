@@ -73,4 +73,25 @@ def select_app():
     elif app.var.get() == "2":
         return "Instagram"
 
+def add_app():
+    """
+    Here the main logic of the function is to check all validations,
+     if at least one validation return False, then app_name, email_name,
+      and password is not saved, otherwise it will be saved in database dictionary,
+      """
+
+    global database
+    x = all((validate_email(), validate_password(), validate_app_name()))
+    if x:
+        if select_app() not in database and select_app() not in load_data():
+            database[select_app()] = [app.email_entry.get(), app.password_entry.get()]
+            popup_message(f"The Credentials for {select_app()} added.")
+            app.email_entry.delete(0, END)
+            app.password_entry.delete(0, END)
+        else:
+            popup_message(f"Sorry, the Credentials for {select_app()} already exists.")
+    if len(database) > 0 and select_app() != None:
+        save_data()
+        app.faceid_button.config(state=NORMAL)
+
 app = App(add_app, reset, start, face_id_security, select_app)
