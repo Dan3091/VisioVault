@@ -140,4 +140,19 @@ def face_id_security():
         app.reset_data_button.config(state=NORMAL)
         app.start_button.config(state=NORMAL)
 
+def reset():
+    """
+    This function will delete database.bin, filekey.key and faceid.jpg from disk,
+     and reset the database to an empty dictionary.
+     """
+
+    global database
+    os.remove("database.bin")
+    os.remove("filekey.key")
+    os.remove("faceid.jpg")
+    database = {}
+    popup_message("All data from database was deleted.")
+    app.reset_data_button.config(state=DISABLED)
+    app.start_button.config(state=DISABLED)
+
 app = App(add_app, reset, start, face_id_security, select_app)
