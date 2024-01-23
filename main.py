@@ -195,4 +195,24 @@ def autofill(app_name):
     else:
         popup_message("Sorry, I can't recognize you!")
 
+def popup_choose_app(message):
+    """
+    Here this function create a popup window,
+     with app selection menu that are in database dictionary.
+     """
+
+    pop = Toplevel()
+    pop.title("Menu")
+    pop_label = Label(pop, text="Select the App:", font="Unispace 16")
+    pop_label.pack(pady=10, padx=10)
+    for app in database:
+        pop_button = Button(pop, text=app, font="Unispace 12", command=lambda a=app:autofill(a))
+        pop_button.pack(pady=5)
+    bottom_padding = Label(pop)
+    bottom_padding.pack()
+    pop.update_idletasks()
+    posx = str((pop.winfo_screenwidth() // 2) - (pop.winfo_width() // 2))
+    posy = str((pop.winfo_screenheight() // 2) - (pop.winfo_height() // 2))
+    pop.geometry(f"{pop.winfo_width()}x{pop.winfo_height()}+{posx}+{posy}")
+
 app = App(add_app, reset, start, face_id_security, select_app)
