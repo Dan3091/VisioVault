@@ -155,4 +155,14 @@ def reset():
     app.reset_data_button.config(state=DISABLED)
     app.start_button.config(state=DISABLED)
 
+def popup_message(message):
+    """
+    Here this function create a popup message window.
+    """
+
+    window = Tk()
+    window.attributes('-topmost', 1)
+    window.withdraw()
+    return showinfo(title="Info", message=message)
+
 app = App(add_app, reset, start, face_id_security, select_app)
