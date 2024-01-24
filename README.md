@@ -15,8 +15,47 @@
 - <b>Windows 11 Pro</b> (23H2)
 
 <h2>Program walk-through:</h2>
-
-
+<p align="center">
+Launch the app: <br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0000.jpg"/>
+<br />
+<br />
+Select the app and fill in the necessary data, then click on "Add APP":  <br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0001.jpg"/>
+<br />
+<br />
+Click on "FaceID" to encrypt your data with face recognition:<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0002.jpg"/>
+<br />
+<br />
+WebCam will begin capturing to find your face:<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0003.jpg"/>
+<br />
+<br />
+A popup message window will appear click "OK"<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0004.jpg"/>
+<br />
+<br />
+Now click on "Start":"<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0005.jpg"/>
+<br />
+<br />
+A popup message window will appear now select your app:"<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0006.jpg"/>
+<br />
+<br />
+WebCam will begin capturing to find your face to decrypt your data:<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0007.jpg"/>
+<br />
+<br />
+A popup message window will appear, click "OK" and you will be redirected to the app account:"<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0008.jpg"/>
+<br />
+<br />
+Your Facebook Account:"<br/>
+<img src="https://github.com/Dan3091/VisioVault/blob/master/image_0009.jpg"/>
+<br />
+<br />
 </p>
 
 <!--
